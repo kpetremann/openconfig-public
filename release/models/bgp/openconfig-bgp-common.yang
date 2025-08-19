@@ -277,6 +277,24 @@ submodule openconfig-bgp-common {
         re-established after being torn down due to exceeding any
         configured max prefix-limit.";
     }
+
+    leaf delay-open-timer {
+      type uint16 {
+        range "0..240";
+      }
+      units "seconds";
+      description
+        "Sets the delay open timer value. The DelayOpen optional session
+         attribute allows implementations to be configured to delay
+         sending an OPEN message for a specific time period (DelayOpenTime).
+         The delay allows the remote BGP peer time to send the first
+         OPEN message.
+
+         Valid range is 1-240 seconds as per RFC 4271. A value of 0
+         disables the delay open timer (OPEN message sent immediately).";
+      reference
+        "RFC 4271: A Border Gateway Protocol 4 (BGP-4), Section 8.2.2";
+    }
   }
 
   grouping bgp-common-neighbor-group-config {
