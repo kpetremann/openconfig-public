@@ -8,6 +8,7 @@ submodule openconfig-bgp-common-multiprotocol {
   import openconfig-bgp-types { prefix oc-bgp-types; }
   import openconfig-routing-policy { prefix oc-rpol; }
   import openconfig-types { prefix oc-types; }
+  import openconfig-inet-types { prefix oc-inet; }
 
   include openconfig-bgp-common;
 
@@ -274,6 +275,16 @@ submodule openconfig-bgp-common-multiprotocol {
         neighbor or group. The default is to not send the
         community attribute. This takes precedence over the neighbor
         or group configuration";
+    }
+
+    leaf-list redistributed-networks {
+      type oc-inet:ip-prefix;
+      description "Network prefix to advertise via BGP";
+    }
+
+    leaf-list aggregates {
+      type oc-inet:ip-prefix;
+      description "Network prefix to aggregate via BGP";
     }
   }
 
